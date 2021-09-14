@@ -2,6 +2,7 @@ import {css, html, LitElement} from 'lit';
 import './CheckoutWidget';
 import {customElement, property} from 'lit/decorators.js';
 import {CheckoutEnvironment} from './constants';
+import {WidgetFlow} from "./CheckoutWidget";
 
 @customElement('checkout-widget-dialog')
 export class CheckoutWidgetDialogElement extends LitElement {
@@ -32,6 +33,9 @@ export class CheckoutWidgetDialogElement extends LitElement {
   @property({type: Boolean})
   open: boolean;
 
+  @property()
+  mode: WidgetFlow = WidgetFlow.PaymentFlow
+
   // for some reason open does not re-render on property change
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
     super.attributeChangedCallback(name, _old, value);
@@ -44,7 +48,7 @@ export class CheckoutWidgetDialogElement extends LitElement {
   render() {
     return html`
       <div class=${this.open ? 'modal' : 'modal--closed'}>
-        <checkout-widget paymentLink="${this.paymentLink}" environment="${this.environment}"></checkout-widget>
+        <checkout-widget mode="${this.mode}" paymentLink="${this.paymentLink}" environment="${this.environment}"></checkout-widget>
       </div>
     `;
   }

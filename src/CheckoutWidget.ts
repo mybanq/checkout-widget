@@ -9,6 +9,11 @@ export type LoginPostMessagePayload = {
   refreshToken: string;
 };
 
+export enum WidgetFlow  {
+  PreRegisterFlow = 'pre-register-flow',
+  PaymentFlow = 'payment-flow'
+}
+
 const environmentUrls = {
   development: 'https://aks-banq-dev-01.eastus.cloudapp.azure.com/widget',
   integration: 'https://aks-banq-int-01.eastus.cloudapp.azure.com/widget',
@@ -35,6 +40,9 @@ export class CheckoutWidgetDialogElement extends LitElement {
 
   @property()
   paymentLink: string;
+
+  @property()
+  mode: WidgetFlow = WidgetFlow.PaymentFlow
 
   connectedCallback() {
     super.connectedCallback();
@@ -67,7 +75,7 @@ export class CheckoutWidgetDialogElement extends LitElement {
   }
 
   render() {
-    const source = environmentUrls[this.environment] + '?' + qs.stringify(createIframeQuery(this.paymentLink));
+    const source = environmentUrls[this.environment] + '?' + qs.stringify(createIframeQuery(this.paymentLink, this.mode));
 
     return html`<iframe style="${styleToCss(this.styles)}" title="Banq Checkout Widget" src="${source}"></iframe> `;
   }
