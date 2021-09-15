@@ -1,5 +1,10 @@
 export const ECOMMERCE_BANQ_refreshToken = '__ECOMMERCE_BANQ_refreshToken';
 
+export enum WidgetFlow  {
+  PreRegisterFlow = 'pre-register-flow',
+  PaymentFlow = 'payment-flow'
+}
+
 export enum IframeEvents {
   styles = 'styles',
   close = 'close',

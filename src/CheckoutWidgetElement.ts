@@ -3,16 +3,11 @@ import qs from 'qs';
 import {customElement, property, state} from 'lit/decorators.js';
 import styleToCss from 'style-object-to-css-string';
 import {createIframeQuery} from './createIframeQuery';
-import {CheckoutAction, CheckoutEnvironment, IframeEvents, ECOMMERCE_BANQ_refreshToken} from './constants';
+import {CheckoutAction, CheckoutEnvironment, IframeEvents, ECOMMERCE_BANQ_refreshToken, WidgetFlow} from './constants';
 
 export type LoginPostMessagePayload = {
   refreshToken: string;
 };
-
-export enum WidgetFlow  {
-  PreRegisterFlow = 'pre-register-flow',
-  PaymentFlow = 'payment-flow'
-}
 
 const environmentUrls = {
   development: 'https://aks-banq-dev-01.eastus.cloudapp.azure.com/widget',
@@ -22,7 +17,7 @@ const environmentUrls = {
 };
 
 @customElement('checkout-widget')
-export class CheckoutWidgetDialogElement extends LitElement {
+export class CheckoutWidgetElement extends LitElement {
   static styles = css`
     iframe {
       border: none;

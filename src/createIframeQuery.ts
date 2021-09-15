@@ -1,5 +1,4 @@
-import {ECOMMERCE_BANQ_refreshToken, IframeEvents} from './constants';
-import {WidgetFlow} from "./CheckoutWidget";
+import {ECOMMERCE_BANQ_refreshToken, IframeEvents, WidgetFlow} from './constants';
 
 export const createIframeQuery = (paymentLink: string, mode: WidgetFlow) => ({
   refreshToken: localStorage.getItem(ECOMMERCE_BANQ_refreshToken),

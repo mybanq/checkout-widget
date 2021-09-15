@@ -1,3 +1,5 @@
 /// <reference types="./globals" />
 
-export * from './CheckoutWidgetDialog';
+export * from './PayWithBanqButtonElement';
+export * from './CheckoutWidgetDialogElement'
+

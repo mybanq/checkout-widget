@@ -1,8 +1,7 @@
 import {css, html, LitElement} from 'lit';
-import './CheckoutWidget';
 import {customElement, property} from 'lit/decorators.js';
-import {CheckoutEnvironment} from './constants';
-import {WidgetFlow} from "./CheckoutWidget";
+import {CheckoutEnvironment, WidgetFlow} from './constants';
+import './CheckoutWidgetElement';
 
 @customElement('checkout-widget-dialog')
 export class CheckoutWidgetDialogElement extends LitElement {
