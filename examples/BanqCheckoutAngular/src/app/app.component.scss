@@ -1,0 +1,153 @@
+#main-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container-buy-section {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column !important;
+  align-items: flex-start;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  background: #fbfdff;
+  padding: 10px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  font-family: SansSerif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 25px;
+  color: #353840;
+  padding: 13px 0;
+}
+
+.buy-section-img {
+  width: 30px;
+  height: 30px;
+}
+
+.container-buy-section-title {
+  font-family: SansSerif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #caced1;
+}
+
+.converted-price {
+  padding-left: 5px;
+}
+
+.banqButton {
+  width: 200px;
+  height: 24px;
+  border: none;
+  color: #ffffff;
+  background: #353840;
+}
+
+
+.nft-sale-container {
+  width: 100%;
+  max-width: 750px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.left-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  width: 100%;
+  max-width: 285px;
+}
+.right-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 13px;
+}
+.nft-img {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  width: 284px;
+  height: 284px;
+  background: url("../assets/images/nft-images.svg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
+
+.category {
+  font-family: SansSerif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #2081e2;
+  padding-bottom: 13px;
+}
+
+.nft-name {
+  font-family: SansSerif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 25px;
+  color: #353840;
+  padding-bottom: 13px;
+}
+
+.owned-by {
+  font-family: SansSerif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #caced1;
+  padding-bottom: 13px;
+}
+
+
+.list-item-img {
+  width: 10px;
+  height: 8px;
+}
+.container-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 13px;
+}
+
+.container-list-item {
+  font-family: SansSerif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: #353840;
+  text-transform: capitalize;
+}
+
+.banqButton {
+  width: 200px;
+  height: 24px;
+  border: none;
+  color: #ffffff;
+  background: #353840;
+}

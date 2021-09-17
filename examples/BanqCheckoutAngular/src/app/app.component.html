@@ -1,0 +1,74 @@
+<div id="main-container">
+  <div class="nft-sale-container">
+    <div class="left-container">
+      <div class="nft-img"></div>
+        <div class="container-list-item">
+          <div  class="list-item-title">Description</div>
+          <img src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/arrow-down.svg" class="list-item-img" />
+        </div>
+      <div class="container-list-item">
+        <div  class="list-item-title">Properties</div>
+        <img src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/arrow-down.svg" class="list-item-img" />
+      </div>
+      <div class="container-list-item">
+        <div  class="list-item-title">Statistics</div>
+        <img src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/arrow-down.svg" class="list-item-img" />
+      </div>
+      <div class="container-list-item">
+        <div  class="list-item-title">About</div>
+        <img src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/arrow-down.svg" class="list-item-img" />
+      </div>
+      <div class="container-list-item">
+        <div  class="list-item-title">Details</div>
+        <img src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/arrow-down.svg" class="list-item-img" />
+      </div>
+    </div>
+    <div class="right-container">
+      <div class="category">banqCats</div>
+      <div class="nft-name">banqbandito</div>
+      <div class="owned-by">
+        Owned by <span class="category">banq-cats-auction</span>
+      </div>
+      <div class="container-buy-section">
+        <div class="container-buy-section-title">Current Price</div>
+        <div class="price">
+          <img class="buy-section-img" src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/etherium.svg" />
+          0.15
+          <span class="title converted-price">($349.91)</span>
+        </div>
+
+
+        <!--  Banq Checkout Pay Button Start     -->
+        <checkout-widget-dialog
+          [open]="isBanqWidgetOpen"
+          [environment]="getEnv()"
+          [paymentLink]="getPaymentLink()"
+          [mode]='"pre-register-flow"'
+          (close)="closeBanqWidget()"
+          (paymentSuccess)="onPaymentSuccess()"
+        >
+        </checkout-widget-dialog>
+
+
+        <button class="banqButton"  (click)="openBanqWidget()">Pay with Banq</button>
+
+
+
+        <!--  Banq Checkout Pay Button End     -->
+      </div>
+      <div class="container-list-item">
+        <div  class="list-item-title">Price history</div>
+        <img src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/arrow-down.svg" class="list-item-img" />
+      </div>
+      <div class="container-list-item">
+        <div  class="list-item-title">Listings</div>
+        <img src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/arrow-down.svg" class="list-item-img" />
+      </div>
+      <div class="container-list-item">
+        <div  class="list-item-title">Offers</div>
+        <img src="/checkout-web-components/example/BanqCheckoutAngular/src/assets/images/arrow-down.svg" class="list-item-img" />
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
