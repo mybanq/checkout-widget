@@ -39,6 +39,9 @@ export class CheckoutWidgetElement extends LitElement {
   @property()
   mode: WidgetFlow = WidgetFlow.PaymentFlow
 
+  @property()
+  name: string
+
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener('message', (event) => this.handleMessage(event));
@@ -70,7 +73,7 @@ export class CheckoutWidgetElement extends LitElement {
   }
 
   render() {
-    const source = environmentUrls[this.environment] + '?' + qs.stringify(createIframeQuery(this.paymentLink, this.mode));
+    const source = environmentUrls[this.environment] + '?' + qs.stringify(createIframeQuery(this.paymentLink, this.mode, this.name));
 
     return html`<iframe style="${styleToCss(this.styles)}" title="Banq Checkout Widget" src="${source}"></iframe> `;
   }

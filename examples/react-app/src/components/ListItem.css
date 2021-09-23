@@ -1,0 +1,24 @@
+.arrow-img {
+  width: 10px;
+  height: 8px;
+}
+.container-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 13px;
+}
+
+.title {
+  font-family: SansSerif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: #353840;
+  text-transform: capitalize;
+}

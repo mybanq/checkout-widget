@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import PayButton from "@/components/PayButton.vue";
+import PayButton from "./PayButton.vue";
 export default {
   name: "BuySection",
   components: {PayButton},

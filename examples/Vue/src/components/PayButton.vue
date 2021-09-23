@@ -8,7 +8,7 @@
       v-on:paymentSuccess="onPaymentSuccess"
 
   />
-  <button class="banqButton" @click="setOpen">Pay with banq</button>
+  <pay-with-banq-button class="banqButton" @click="setOpen">Pay with banq</pay-with-banq-button>
 </template>
 
 <script lang="ts">
