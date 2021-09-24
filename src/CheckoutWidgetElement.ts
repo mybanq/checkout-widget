@@ -1,9 +1,9 @@
 import {css, html, LitElement} from 'lit';
 import qs from 'qs';
-import {customElement, property, state} from 'lit/decorators.js';
-import styleToCss from 'style-object-to-css-string';
+import {customElement, property, query, state} from 'lit/decorators.js';
 import {createIframeQuery} from './createIframeQuery';
 import {CheckoutAction, CheckoutEnvironment, IframeEvents, ECOMMERCE_BANQ_refreshToken, WidgetFlow} from './constants';
+import {appendStyle} from "./utils";
 
 export type LoginPostMessagePayload = {
   refreshToken: string;
@@ -57,7 +57,7 @@ export class CheckoutWidgetElement extends LitElement {
     this.dispatchEvent(new CustomEvent(action.type, {detail: event.data, bubbles: true, composed: true}));
 
     if (action.type === IframeEvents.styles) {
-      this.styles = action.payload as Record<string, string | number>;
+      appendStyle(this.iframe, action.payload  as Record<string, string>)
     }
 
     if (action.type === IframeEvents.login) {
@@ -72,9 +72,12 @@ export class CheckoutWidgetElement extends LitElement {
     }
   }
 
+  @query('#checkout-iframe')
+  iframe!: HTMLIFrameElement;
+
   render() {
     const source = environmentUrls[this.environment] + '?' + qs.stringify(createIframeQuery(this.paymentLink, this.mode, this.name));
 
-    return html`<iframe style="${styleToCss(this.styles)}" title="Banq Checkout Widget" src="${source}"></iframe> `;
+    return html`<iframe id="checkout-iframe" title="Banq Checkout Widget" src="${source}"></iframe> `;
   }
 }
