@@ -7,7 +7,7 @@ This integration has three pieces:
 1. A front end integration of the Checkout widget for the end to end flow the end user can use to pay.
 Contact Banq Team to obtain YOUR-CLIENT-ID, YOUR-CLIENT-USERNAME/PASSWORD
 
-![Overview](docs/overview.png)
+![Overview](./overview.png)
 
 
 > ###### Intermediary Endpoint
@@ -52,7 +52,7 @@ Contact Banq Team to obtain `YOUR-CLIENT-ID`, `YOUR-CLIENT-USERNAME/PASSWORD`
 
 5. And add this **MERCHANT-BANQ-GUID** to step 2 `https://sandbox.banq.com/api/v1/payments/get-paid-link`
 
-![Get Payment Link Diagram](docs/get_payment_link_diagram.png)
+![Get Payment Link Diagram](./get_payment_link_diagram.png)
 
 ## Subscribing to Webhooks
 1. You need to create an endpoint that will receive POST `https://PATH-TO-YOUR-WEBSITE/your-web-hooks/payment-status` With a webHook event as Stream.
