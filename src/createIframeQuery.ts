@@ -10,5 +10,5 @@ export const createIframeQuery = (paymentLink: string, mode: WidgetFlow, name: s
     name,
     mode,
   }),
-  paymentLink
+  paymentLink,
 });

@@ -2,8 +2,15 @@ import {css, html, LitElement} from 'lit';
 import qs from 'qs';
 import {customElement, property, query, state} from 'lit/decorators.js';
 import {createIframeQuery} from './createIframeQuery';
-import {CheckoutAction, CheckoutEnvironment, IframeEvents, ECOMMERCE_BANQ_refreshToken, WidgetFlow} from './constants';
-import {appendStyle} from "./utils";
+import {
+  CheckoutAction,
+  CheckoutEnvironment,
+  IframeEvents,
+  ECOMMERCE_BANQ_refreshToken,
+  WidgetFlow,
+  ECOMMERCE_BANQ_settings,
+} from './constants';
+import {appendStyle} from './utils';
 
 export type LoginPostMessagePayload = {
   refreshToken: string;
@@ -37,13 +44,16 @@ export class CheckoutWidgetElement extends LitElement {
   paymentLink: string;
 
   @property()
-  mode: WidgetFlow = WidgetFlow.PaymentFlow
+  mode: WidgetFlow = WidgetFlow.PaymentFlow;
 
   @property()
-  name: string
+  name: string;
 
   connectedCallback() {
     super.connectedCallback();
+    if (this.mode === WidgetFlow.PaymentFlow && !this.paymentLink)
+      throw new Error("paymentLink is required attribute in 'payment-flow' mode");
+
     window.addEventListener('message', (event) => this.handleMessage(event));
   }
 
@@ -57,18 +67,29 @@ export class CheckoutWidgetElement extends LitElement {
     this.dispatchEvent(new CustomEvent(action.type, {detail: event.data, bubbles: true, composed: true}));
 
     if (action.type === IframeEvents.styles) {
-      appendStyle(this.iframe, action.payload  as Record<string, string>)
+      appendStyle(this.iframe, action.payload as Record<string, string>);
     }
 
     if (action.type === IframeEvents.login) {
       const loginPayload = action.payload as LoginPostMessagePayload;
-      if (!loginPayload.refreshToken) localStorage.removeItem(IframeEvents.settings);
-      localStorage.setItem(ECOMMERCE_BANQ_refreshToken, (action.payload as LoginPostMessagePayload).refreshToken as string);
+      if (!loginPayload.refreshToken) {
+        localStorage.removeItem(IframeEvents.settings);
+        localStorage.removeItem(ECOMMERCE_BANQ_refreshToken);
+        this.dispatchEvent(new CustomEvent('close', {detail: event.data, bubbles: true, composed: true}));
+        this.requestUpdate();
+      } else {
+        localStorage.setItem(ECOMMERCE_BANQ_refreshToken, (action.payload as LoginPostMessagePayload).refreshToken);
+      }
     }
 
     if (action?.type === IframeEvents.settings) {
       const payload = action.payload as string;
-      localStorage.setItem(IframeEvents.settings, payload);
+      localStorage.setItem(ECOMMERCE_BANQ_settings, payload);
+    }
+
+    if (action?.type === IframeEvents.close) {
+      localStorage.removeItem(ECOMMERCE_BANQ_refreshToken);
+      this.requestUpdate();
     }
   }
 
@@ -76,8 +97,8 @@ export class CheckoutWidgetElement extends LitElement {
   iframe!: HTMLIFrameElement;
 
   render() {
-    const source = environmentUrls[this.environment] + '?' + qs.stringify(createIframeQuery(this.paymentLink, this.mode, this.name));
-
+    const query = createIframeQuery(this.paymentLink, this.mode, this.name);
+    const source = environmentUrls[this.environment] + '?' + qs.stringify(query);
     return html`<iframe id="checkout-iframe" title="Banq Checkout Widget" src="${source}"></iframe> `;
   }
 }

@@ -1,9 +1,9 @@
 import typescript from 'rollup-plugin-typescript2';
-import commonjs from 'rollup-plugin-commonjs';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
-import resolve from 'rollup-plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
-import { terser } from "rollup-plugin-terser";
+import {terser} from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 export default {
@@ -25,10 +25,10 @@ export default {
     },
   ],
   plugins: [
+    nodeResolve({browser: true}),
     terser(),
     copy({targets: [{src: 'src/globals.d.ts', dest: 'dist'}]}),
     external(),
-    resolve({preferBuiltins: true}),
     typescript({
       rollupCommonJSResolveHack: true,
       exclude: '**/__tests__/**',

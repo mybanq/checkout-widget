@@ -15,11 +15,13 @@
     "dist"
   ],
   "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.5",
     "clsx": "^1.1.1",
     "lit": "^2.0.0-rc.4",
     "qs": "^6.10.1",
     "rollup-plugin-terser": "^7.0.2",
-    "style-object-to-css-string": "^1.0.1"
+    "style-object-to-css-string": "^1.0.1",
+    "util": "^0.12.4"
   },
   "devDependencies": {
     "@open-wc/building-rollup": "^1.9.4",

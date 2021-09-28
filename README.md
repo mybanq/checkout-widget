@@ -2,6 +2,9 @@
 
 Our Checkout widget enables platforms to quickly process payments from cards, ACH, and banq user's balance by loading a javascript widget which contains the end to end payment flow.
 The payment processed by the checkout widget is configured from a backend API call and funds are settled into the merchant's banq business account.
+
+![Overview](./docs/overview.png)
+
 ##Types of Payments
 The Open API supports a flexible set payments including:
 
@@ -31,7 +34,7 @@ yarn add @banq/checkout-widget
 
 # Usage
 
-Add this to starting point of your project such as: index.js or index.ts files
+Add this import to starting point of your project such as: index.js or index.ts files
 
 ```ts
 import '@banq/checkout-widget';
@@ -61,7 +64,7 @@ Create a `<checkout-widget-dialog/>` element with required attributes mentioned 
 | name            | Description |                                                                                                                                                                                                                                   
 | --------------- | ------: | 
 | close           | Fires after widget closes   |                                                                                                                                                                                                                
-| paymentSuccess  | Fires when user creates payment |  
+| successPayment  | Fires when user creates payment |  
 
 Create a `<pay-with-banq-button/>` element with required attributes mentioned below.
 

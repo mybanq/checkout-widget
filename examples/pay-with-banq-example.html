@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pay with Banq Example</title>
+</head>
+<body>
+<!--NO FRAMEWORK EXAMPLE-->
+
+<script type="module" src="../dist/index.es.js"></script>
+
+<pay-with-banq-button></pay-with-banq-button>
+<checkout-widget-dialog environment="sandbox"></checkout-widget-dialog>
+<script>
+
+  const generatePaymentLinkRequest = ()=> new Promise((resolve) => setTimeout(() => resolve('https://link.banq.com/4x1t09WiOjb'), 2000))
+
+  const payWithBanqButton = document.querySelector('pay-with-banq-button')
+  const checkoutWidgetDialog = document.querySelector('checkout-widget-dialog')
+
+  payWithBanqButton.addEventListener('click', async ()=>{
+    payWithBanqButton.loading = true
+    checkoutWidgetDialog.paymentLink = await generatePaymentLinkRequest()
+    checkoutWidgetDialog.open = true
+    payWithBanqButton.loading = false
+  })
+  checkoutWidgetDialog.addEventListener('close',()=>{
+    checkoutWidgetDialog.open = false
+  })
+  checkoutWidgetDialog.addEventListener('successPayment',()=>{
+    alert('Payment Complete')
+  })
+</script>
+</body>
+</html>

@@ -33,7 +33,7 @@ export default {
 
     // example of function to get paymentLink
     const getPaymentLink = () => {
-      return 'https://link.banq.com/xM1CV6e3Eib'
+      return 'https://link.banq.com/4x1t09WiOjb'
     }
 
     // example of function which will be triggered on payment success

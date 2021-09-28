@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pre Register With Banq Example</title>
+</head>
+<body>
+<!--NO FRAMEWORK EXAMPLE-->
+
+<script type="module" src="../dist/index.es.js"></script>
+
+<pay-with-banq-button mode="pre-register-flow"></pay-with-banq-button>
+<checkout-widget-dialog environment="sandbox" mode="pre-register"></checkout-widget-dialog>
+<script>
+  const payWithBanqButton = document.querySelector('pay-with-banq-button')
+  const checkoutWidgetDialog = document.querySelector('checkout-widget-dialog')
+
+  payWithBanqButton.addEventListener('click', async ()=>{
+    payWithBanqButton.loading = true
+    checkoutWidgetDialog.open = true
+    payWithBanqButton.loading = false
+  })
+  checkoutWidgetDialog.addEventListener('close',()=>{
+    checkoutWidgetDialog.open = false
+  })
+</script>
+</body>
+</html>

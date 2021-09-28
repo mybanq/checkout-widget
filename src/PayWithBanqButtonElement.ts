@@ -1,6 +1,12 @@
 import {css, html, LitElement} from 'lit';
-import clsx from 'clsx'
+import clsx from 'clsx';
 import {customElement, property} from 'lit/decorators.js';
+import {WidgetFlow} from './constants';
+
+const defaultLabel = {
+  [WidgetFlow.PaymentFlow]: 'Pay with',
+  [WidgetFlow.PreRegisterFlow]: 'Pre-register with',
+};
 
 @customElement('pay-with-banq-button')
 export class PayWithBanqButtonElement extends LitElement {
@@ -68,17 +74,20 @@ export class PayWithBanqButtonElement extends LitElement {
     }
   `;
 
-  @property({type:String})
-  class: string
+  @property({type: String})
+  class: string;
 
-  @property({type:Boolean})
-  loading: boolean
+  @property({type: Boolean})
+  loading: boolean;
 
-  @property({type:Boolean})
-  disabled: boolean
+  @property({type: Boolean})
+  disabled: boolean;
 
-  @property({type:Boolean})
-  error: boolean
+  @property({type: Boolean})
+  error: boolean;
+
+  @property()
+  mode: WidgetFlow = WidgetFlow.PaymentFlow;
 
   // for some reason open does not re-render on property change
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
@@ -100,11 +109,17 @@ export class PayWithBanqButtonElement extends LitElement {
   }
 
   render() {
-    const label = this.error ? 'Something went wrong' : 'Pay with'
+    const label = this.error ? 'Something went wrong' : defaultLabel[this.mode];
 
-    return html`<button ?disabled=${this.error || this.disabled} class='${clsx('pay-with-banq-button', {
-      'pay-with-banq-button--loading': this.loading,
-      'pay-with-banq-button--disabled': this.disabled,
-    })}' type='button'>${label}</button> `;
+    return html`<button
+      ?disabled=${this.loading || this.error || this.disabled}
+      class="${clsx('pay-with-banq-button', {
+        'pay-with-banq-button--loading': this.loading,
+        'pay-with-banq-button--disabled': this.loading || this.disabled,
+      })}"
+      type="button"
+    >
+      ${this.loading ? '' : label}
+    </button> `;
   }
 }

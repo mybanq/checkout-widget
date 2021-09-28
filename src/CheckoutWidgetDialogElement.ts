@@ -33,10 +33,10 @@ export class CheckoutWidgetDialogElement extends LitElement {
   open: boolean;
 
   @property()
-  mode: WidgetFlow = WidgetFlow.PaymentFlow
+  mode: WidgetFlow = WidgetFlow.PaymentFlow;
 
   @property()
-  name: string
+  name: string;
 
   // for some reason open does not re-render on property change
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
@@ -47,11 +47,16 @@ export class CheckoutWidgetDialogElement extends LitElement {
     }
   }
 
+  renderWidget() {
+    return html`<checkout-widget
+      mode="${this.mode}"
+      name="${this.name}"
+      paymentLink="${this.paymentLink}"
+      environment="${this.environment}"
+    ></checkout-widget>`;
+  }
+
   render() {
-    return html`
-      <div class=${this.open ? 'modal' : 'modal--closed'}>
-        <checkout-widget mode="${this.mode}" name="${this.name}" paymentLink="${this.paymentLink}" environment="${this.environment}"></checkout-widget>
-      </div>
-    `;
+    return html` <div class=${this.open ? 'modal' : 'modal--closed'}>${this.open && this.renderWidget()}</div> `;
   }
 }

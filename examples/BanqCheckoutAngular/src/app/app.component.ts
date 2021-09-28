@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   getPaymentLink() {
-    return 'https://link.banq.com/xM1CV6e3Eib'
+    return 'https://link.banq.com/4x1t09WiOjb'
   }
 
   getEnv() {
