@@ -6,6 +6,11 @@ export enum WidgetFlow {
   PaymentFlow = 'payment-flow',
 }
 
+export enum WidgetThemeMode {
+  Dark = 'dark',
+  Light = 'light',
+}
+
 export enum IframeEvents {
   styles = 'styles',
   close = 'close',

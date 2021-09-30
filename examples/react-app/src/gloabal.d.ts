@@ -19,6 +19,7 @@ interface CheckoutWidgetDialogAttributes extends React.HTMLAttributes<CheckoutWi
   paymentLink: string;
   open?: boolean;
   environment?: 'development' | 'integration' | 'sandbox' | 'production';
+  themeMode?: 'light' | 'dark';
 }
 
 declare namespace JSX {

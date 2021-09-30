@@ -1,6 +1,7 @@
 import {css, html, LitElement} from 'lit';
 import qs from 'qs';
-import {customElement, property, query, state} from 'lit/decorators.js';
+import clsx from 'clsx';
+import {customElement, property, query} from 'lit/decorators.js';
 import {createIframeQuery} from './createIframeQuery';
 import {
   CheckoutAction,
@@ -9,6 +10,7 @@ import {
   ECOMMERCE_BANQ_refreshToken,
   WidgetFlow,
   ECOMMERCE_BANQ_settings,
+  WidgetThemeMode,
 } from './constants';
 import {appendStyle} from './utils';
 
@@ -29,13 +31,11 @@ export class CheckoutWidgetElement extends LitElement {
     iframe {
       border: none;
     }
+    .dark-theme {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.06);
+    }
   `;
-  @state()
-  styles: Record<string, string | number> = {
-    width: '841px',
-    height: '494px',
-    border: 'none',
-  };
 
   @property()
   environment: CheckoutEnvironment = CheckoutEnvironment.sandbox;
@@ -48,6 +48,9 @@ export class CheckoutWidgetElement extends LitElement {
 
   @property()
   name: string;
+
+  @property()
+  themeMode?: WidgetThemeMode;
 
   connectedCallback() {
     super.connectedCallback();
@@ -97,8 +100,18 @@ export class CheckoutWidgetElement extends LitElement {
   iframe!: HTMLIFrameElement;
 
   render() {
-    const query = createIframeQuery(this.paymentLink, this.mode, this.name);
+    const query = createIframeQuery({
+      paymentLink: this.paymentLink,
+      mode: this.mode,
+      name: this.name,
+      themeMode: this.themeMode,
+    });
     const source = environmentUrls[this.environment] + '?' + qs.stringify(query);
-    return html`<iframe id="checkout-iframe" title="Banq Checkout Widget" src="${source}"></iframe> `;
+    return html`<iframe
+      class="${clsx({'dark-theme': this.themeMode === WidgetThemeMode.Dark})}"
+      id="checkout-iframe"
+      title="Banq Checkout Widget"
+      src="${source}"
+    ></iframe> `;
   }
 }

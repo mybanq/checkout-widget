@@ -1,6 +1,6 @@
 import {css, html, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {CheckoutEnvironment, WidgetFlow} from './constants';
+import {CheckoutEnvironment, WidgetFlow, WidgetThemeMode} from './constants';
 import './CheckoutWidgetElement';
 
 @customElement('checkout-widget-dialog')
@@ -38,6 +38,9 @@ export class CheckoutWidgetDialogElement extends LitElement {
   @property()
   name: string;
 
+  @property()
+  themeMode?: WidgetThemeMode;
+
   // for some reason open does not re-render on property change
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
     super.attributeChangedCallback(name, _old, value);
@@ -53,6 +56,7 @@ export class CheckoutWidgetDialogElement extends LitElement {
       name="${this.name}"
       paymentLink="${this.paymentLink}"
       environment="${this.environment}"
+      themeMode="${this.themeMode || WidgetThemeMode.Light}"
     ></checkout-widget>`;
   }
 
