@@ -1,11 +1,22 @@
 {
   "name": "@banq/checkout-widget",
-  "version": "0.0.1",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "license": "MIT",
+  "description": "Our Checkout widget enables platforms to quickly process payments from cards, ACH, and banq user's balance by loading a javascript widget which contains the end to end payment flow. The payment processed by the checkout widget is configured from a backend API call and funds are settled into the merchant's banq business account.",
+  "directories": {
+    "docs": "docs",
+    "examples": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mybanq/checkout-widget"
+  },
+  "author": "Banq Team",
+  "homepage": "https://developers.banq.com/docs/get-started-with-checkout-widget",
   "scripts": {
     "start": "rollup -w -c rollup.config.js",
     "build": "rimraf dist && tsc && rollup -c rollup.config.js",

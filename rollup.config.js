@@ -25,8 +25,8 @@ export default {
     },
   ],
   plugins: [
-    nodeResolve({browser: true}),
     terser(),
+    nodeResolve({browser: true}),
     copy({targets: [{src: 'src/globals.d.ts', dest: 'dist'}]}),
     external(),
     typescript({

@@ -5,21 +5,21 @@ The payment processed by the checkout widget is configured from a backend API ca
 
 ![Overview](./docs/overview.png)
 
-##Types of Payments
+## Types of Payments
 The Open API supports a flexible set payments including:
 
 - One time real-time payments
 - Recurring payments
 - Scheduled payments
 
-##Payment Sources
+## Payment Sources
 End users can make payments from their:
 
 - banq balance
 - checking account
 - debit & credit cards (depending on the merchants industry)
 
-#Installation
+# Installation
 To install the stable version:
 
 ```
@@ -51,7 +51,7 @@ Create a `<checkout-widget-dialog/>` element with required attributes mentioned 
 />
 ```
 
-###Attributes:
+### Attributes:
 
 | name            | Required |                                                                                                                                                                                                                                        Description |
 | --------------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -60,7 +60,7 @@ Create a `<checkout-widget-dialog/>` element with required attributes mentioned 
 | environment     |    ✔     |                                                                                                                                        Environment you want to use. If you want test widget use `sandbox`. Possible values: `sandbox`,`production` |
 | paymentLink     |          |                                          Payment link required to enable payments. When mode:`pre-register` is set `paymentLink` attribute is not required. See [Generate Payment Link Docs](./docs/GENERATE_PAYMENT_LINK.md) for more information |
 
-###Events:
+### Events:
 | name            | Description |                                                                                                                                                                                                                                   
 | --------------- | ------: | 
 | close           | Fires after widget closes   |                                                                                                                                                                                                                
@@ -78,7 +78,7 @@ Create a `<pay-with-banq-button/>` element with required attributes mentioned be
 />
 ```
 
-###Attributes:
+### Attributes:
 
 | name            | Required |                                                                                                                                                                                                                                        Description |
 | --------------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -88,7 +88,7 @@ Create a `<pay-with-banq-button/>` element with required attributes mentioned be
 | mode            |          | If you have some anticipated sales material, it's beneficial to allow your end-users to pre-register with banq and add payment methods before the sales material is available for purchase. Possible values: payment-flow, pre-register-flow                                         Payment link required to enable payments. When mode:`pre-register` is set `paymentLink` attribute is not required. See [Generate Payment Link Docs](./docs/GENERATE_PAYMENT_LINK.md) for more information |
 | name            |          | Widget placement name for analytics. Possible values: name of the drop  |
 
-###Events:
+### Events:
 | name            | Description |                                                                                                                                                                                                                                   
 | --------------- | ------: | 
 | click           | Fires on button click   |                                                                                                                                                                                                                

@@ -19,10 +19,10 @@ export type LoginPostMessagePayload = {
 };
 
 const environmentUrls = {
-  development: 'https://aks-banq-dev-01.eastus.cloudapp.azure.com/widget',
-  integration: 'https://aks-banq-int-01.eastus.cloudapp.azure.com/widget',
-  sandbox: 'https://aks-banq-stage-01.eastus.cloudapp.azure.com/widget',
-  production: 'https://aks-banq-prod-01.eastus.cloudapp.azure.com/widget',
+  development: '//aks-banq-dev-01.eastus.cloudapp.azure.com/widget/',
+  integration: '//aks-banq-int-01.eastus.cloudapp.azure.com/widget/',
+  sandbox: '//aks-banq-stage-01.eastus.cloudapp.azure.com/widget/',
+  production: '//aks-banq-prod-01.eastus.cloudapp.azure.com/widget/',
 };
 
 @customElement('checkout-widget')
