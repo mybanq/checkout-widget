@@ -21,7 +21,7 @@ export type LoginPostMessagePayload = {
 const environmentUrls = {
   development: '//aks-banq-dev-01.eastus.cloudapp.azure.com/widget/',
   integration: '//aks-banq-int-01.eastus.cloudapp.azure.com/widget/',
-  sandbox: '//aks-banq-stage-01.eastus.cloudapp.azure.com/widget/',
+  sandbox: '//sandbox.banq.com/widget/',
   production: '//aks-banq-prod-01.eastus.cloudapp.azure.com/widget/',
 };
 
