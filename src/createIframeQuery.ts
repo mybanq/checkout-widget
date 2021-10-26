@@ -1,15 +1,19 @@
-import {ECOMMERCE_BANQ_refreshToken, IframeEvents, WidgetFlow, WidgetThemeMode} from './constants';
+import { ECOMMERCE_BANQ_refreshToken, IframeEvents, SignUpFlowType, WidgetFlow, WidgetTheme } from './constants';
 
 export const createIframeQuery = ({
   paymentLink,
   mode,
   name,
   themeMode,
+  signUpFlowType,
+  tips,
 }: {
   paymentLink: string;
   mode: WidgetFlow;
   name: string;
-  themeMode?: WidgetThemeMode;
+  themeMode?: WidgetTheme;
+  signUpFlowType?:SignUpFlowType,
+  tips: boolean
 }) => ({
   refreshToken: localStorage.getItem(ECOMMERCE_BANQ_refreshToken),
   settings: localStorage.getItem(IframeEvents.settings),
@@ -19,7 +23,10 @@ export const createIframeQuery = ({
   appConfig: JSON.stringify({
     name,
     mode,
+    signUpFlowType,
     themeMode,
+    tips,
   }),
+  tips,
   paymentLink,
 });

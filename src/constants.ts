@@ -6,7 +6,7 @@ export enum WidgetFlow {
   PaymentFlow = 'payment-flow',
 }
 
-export enum WidgetThemeMode {
+export enum WidgetTheme {
   Dark = 'dark',
   Light = 'light',
 }
@@ -30,4 +30,10 @@ export enum CheckoutEnvironment {
 export interface CheckoutAction<P = unknown> {
   type: IframeEvents;
   payload: P;
+}
+
+
+export enum SignUpFlowType {
+  ShortSignUp = 'short-sign-up',
+  LongSignUp = 'long-sign-up',
 }

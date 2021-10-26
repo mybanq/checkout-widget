@@ -19,7 +19,7 @@ interface Props {
   environment: keyof typeof CheckoutEnvironment;
   onClose?: () => void;
   onPaymentSuccess?: () => void;
-  themeMode?: CheckoutThemeMode;
+  theme?: CheckoutThemeMode;
 }
 
 export const CheckoutWidgetDialog = ({
@@ -28,7 +28,7 @@ export const CheckoutWidgetDialog = ({
   onClose,
   paymentLink,
   onPaymentSuccess,
-  themeMode,
+  theme,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -46,7 +46,7 @@ export const CheckoutWidgetDialog = ({
       open={isOpen}
       environment={environment}
       paymentLink={paymentLink}
-      themeMode={themeMode}
+      theme={theme}
     />
   );
 };

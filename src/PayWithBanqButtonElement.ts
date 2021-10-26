@@ -11,6 +11,10 @@ const defaultLabel = {
 @customElement('pay-with-banq-button')
 export class PayWithBanqButtonElement extends LitElement {
   static styles = css`
+    :root {
+      width: 100%;
+      display: block;
+    }
     .pay-with-banq-button {
       position: relative;
       background: linear-gradient(90deg, #f82507 0%, #7622a9 69.27%, #7622a9 100%);
@@ -111,7 +115,7 @@ export class PayWithBanqButtonElement extends LitElement {
   render() {
     const label = this.error ? 'Something went wrong' : defaultLabel[this.mode];
 
-    return html`<button
+    return html`<button part="button"
       ?disabled=${this.loading || this.error || this.disabled}
       class="${clsx('pay-with-banq-button', {
         'pay-with-banq-button--loading': this.loading,

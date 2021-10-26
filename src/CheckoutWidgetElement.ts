@@ -10,7 +10,7 @@ import {
   ECOMMERCE_BANQ_refreshToken,
   WidgetFlow,
   ECOMMERCE_BANQ_settings,
-  WidgetThemeMode,
+  WidgetTheme, SignUpFlowType,
 } from './constants';
 import {appendStyle} from './utils';
 
@@ -33,7 +33,7 @@ export class CheckoutWidgetElement extends LitElement {
     }
     .dark-theme {
       border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.06);
     }
   `;
 
@@ -50,7 +50,13 @@ export class CheckoutWidgetElement extends LitElement {
   name: string;
 
   @property()
-  themeMode?: WidgetThemeMode;
+  theme: WidgetTheme;
+
+  @property()
+  signUpFlowType: SignUpFlowType;
+
+  @property({type:Boolean})
+  tips: boolean
 
   connectedCallback() {
     super.connectedCallback();
@@ -104,11 +110,13 @@ export class CheckoutWidgetElement extends LitElement {
       paymentLink: this.paymentLink,
       mode: this.mode,
       name: this.name,
-      themeMode: this.themeMode,
+      themeMode: this.theme,
+      signUpFlowType: this.signUpFlowType,
+      tips: this.tips
     });
     const source = environmentUrls[this.environment] + '?' + qs.stringify(query);
     return html`<iframe
-      class="${clsx({'dark-theme': this.themeMode === WidgetThemeMode.Dark})}"
+      class="${clsx({'dark-theme': this.theme === WidgetTheme.Dark})}"
       id="checkout-iframe"
       title="Banq Checkout Widget"
       src="${source}"

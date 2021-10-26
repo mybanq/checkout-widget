@@ -16,10 +16,10 @@ interface PayWithBanqButtonAttributes extends React.HTMLAttributes<HTMLButtonEle
 
 interface CheckoutWidgetDialogAttributes extends React.HTMLAttributes<CheckoutWidgetDialogElement> {
   ref?: RefObject<CheckoutWidgetDialogElement>;
-  paymentLink: string;
+  paymentLink?: string;
   open?: boolean;
   environment?: 'development' | 'integration' | 'sandbox' | 'production';
-  themeMode?: 'light' | 'dark';
+  theme?: 'light' | 'dark';
 }
 
 declare namespace JSX {

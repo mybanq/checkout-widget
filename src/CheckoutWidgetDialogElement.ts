@@ -1,6 +1,6 @@
-import {css, html, LitElement} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
-import {CheckoutEnvironment, WidgetFlow, WidgetThemeMode} from './constants';
+import { css, html, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { CheckoutEnvironment, SignUpFlowType, WidgetFlow, WidgetTheme } from './constants';
 import './CheckoutWidgetElement';
 
 @customElement('checkout-widget-dialog')
@@ -39,7 +39,13 @@ export class CheckoutWidgetDialogElement extends LitElement {
   name: string;
 
   @property()
-  themeMode?: WidgetThemeMode;
+  theme: WidgetTheme = WidgetTheme.Light;
+
+  @property()
+  signUpFlowType?: SignUpFlowType
+
+  @property({type: Boolean})
+  tips: boolean
 
   // for some reason open does not re-render on property change
   attributeChangedCallback(name: string, _old: string | null, value: string | null) {
@@ -48,15 +54,22 @@ export class CheckoutWidgetDialogElement extends LitElement {
       this.open = false;
       this.requestUpdate();
     }
+
+    if (name === 'tips' && value === 'false') {
+      this.tips = false;
+      this.requestUpdate();
+    }
   }
 
   renderWidget() {
     return html`<checkout-widget
       mode="${this.mode}"
       name="${this.name}"
+      tips="${this.tips}"
+      signUpFlowType="${this.signUpFlowType}"
       paymentLink="${this.paymentLink}"
       environment="${this.environment}"
-      themeMode="${this.themeMode || WidgetThemeMode.Light}"
+      theme="${this.theme}"
     ></checkout-widget>`;
   }
 
